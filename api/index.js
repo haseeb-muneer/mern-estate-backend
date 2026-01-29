@@ -24,11 +24,13 @@ app.use("/api/user", UserRouter);
 app.use("/api/auth", AuthRouter);
 app.use("/api/listing", ListingRouter);
 
-app.use(express.static(path.join(_dirname, "/Client/dist")));
-app.use((req, res) => {
-  res.sendFile(path.join(_dirname, "Client", "dist", "index.html"));
+// app.use(express.static(path.join(_dirname, "/Client/dist")));
+// app.use((req, res) => {
+//   res.sendFile(path.join(_dirname, "Client", "dist", "index.html"));
+// });
+app.get("/", (req, res) => {
+  res.send("API is running...");
 });
-
 
 app.use((error, req, res, next) => {
   const statusCode = error.statusCode || 5000;

@@ -1,0 +1,16 @@
+import express from "express";
+const router = express.Router();
+import {
+  createListing,
+  deleteListing,
+  updateListing,
+  getListing,
+  getListings
+} from "../Controllers/ListingController.js";
+import { verifyUser } from "../../utils/verifyUser.js";
+router.post("/create", verifyUser, createListing);
+router.delete("/delete/:id", verifyUser, deleteListing);
+router.post("/update/:id", verifyUser, updateListing);
+router.get("/get/:id", getListing);
+router.get("/get" , getListings);
+export default router;

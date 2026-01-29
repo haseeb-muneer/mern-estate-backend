@@ -1,8 +1,8 @@
 import { hashSync } from "bcryptjs";
 import bcryptjs from "bcryptjs";
-import Listing from "../Model/ListingModel.js";
-import { errorHandler } from "../../utils/error.js";
-import User from "../Model/UserModel.js";
+import Listing from "../api/Model/ListingModel.js";
+import { errorHandler } from "../utils/error.js";
+import User from "../api/Model/UserModel.js";
 export const handleGet = async (req, res) => {
   return res.send("Hello Developer");
 };

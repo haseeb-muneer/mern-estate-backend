@@ -1,6 +1,6 @@
 import express from "express";
 import { deleteUser, handleGet } from "../Controllers/UserController.js";
-import { verifyUser } from "../../utils/verifyUser.js";
+import { verifyUser } from "../utils/verifyUser.js";
 import {
   updateUser,
   getUserListings,

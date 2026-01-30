@@ -11,13 +11,15 @@ const PORT=process.env.PORT ||"3000";
 const app = express();
 const _dirname = path.resolve();
 
+
+
 mongoose
   .connect(process.env.MONGO)
   .then(() => {
     console.log("Databse is connected");
   })
   .catch((error) => console.log(error.message));
-  console.log(process.env.MONGO);
+ 
 app.use(express.json());
 app.use(cookieParser());
 app.use("/api/user", UserRouter);
@@ -33,7 +35,7 @@ app.get("/", (req, res) => {
 });
 
 app.use((error, req, res, next) => {
-  const statusCode = error.statusCode || 5000;
+  const statusCode = error.statusCode || 500;
   const message = error.message;
   return res.status(statusCode).json({
     success: false,
@@ -46,4 +48,4 @@ app.listen(PORT, () => {
   console.log("server is listening");
 });
 }
-export default app;
+export default app

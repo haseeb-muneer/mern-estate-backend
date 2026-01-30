@@ -1,4 +1,4 @@
-import { errorHandler } from "../../utils/error.js";
+import { errorHandler } from "../utils/error.js";
 import Listing from "../Model/ListingModel.js";
 export const createListing = async (req, res, next) => {
   try {

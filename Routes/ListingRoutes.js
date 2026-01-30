@@ -6,8 +6,8 @@ import {
   updateListing,
   getListing,
   getListings
-} from "../../Controllers/ListingController.js";
-import { verifyUser } from "../../utils/verifyUser.js";
+} from "../Controllers/ListingController.js";
+import { verifyUser } from "../utils/verifyUser.js";
 router.post("/create", verifyUser, createListing);
 router.delete("/delete/:id", verifyUser, deleteListing);
 router.post("/update/:id", verifyUser, updateListing);

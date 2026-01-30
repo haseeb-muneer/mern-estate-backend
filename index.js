@@ -52,5 +52,5 @@ if (process.env.VERCEL !== "1") {
   app.listen(PORT, () => {
     console.log("server is listening on local machine");
   });
-}
+}   
 export default app

@@ -6,6 +6,7 @@ import UserRouter from "./Routes/UserRoutes.js";
 import AuthRouter from "./Routes/AuthRoutes.js";
 import ListingRouter from "./Routes/ListingRoutes.js";
 import path from "path";
+import cors from "cors";
 dotenv.config();
 const PORT=process.env.PORT ||"3000";
 const app = express();
@@ -19,7 +20,10 @@ mongoose
     console.log("Databse is connected");
   })
   .catch((error) => console.log(error.message));
- 
+ app.use(cors({
+  origin: "https://mern-estate-frontend-delta.vercel.app/",
+  credentials: true
+}));
 app.use(express.json());
 app.use(cookieParser());
 app.use("/api/user", UserRouter);

@@ -36,6 +36,8 @@ export const Signin = async (req, res, next) => {
     res
       .cookie("token", token, {
         httpOnly: true,
+        secure: true,        // 🔥 REQUIRED on HTTPS (Vercel)
+  sameSite: "none",    // 🔥 REQUIRED for cross-domain
         maxAge: Date.now() + 24 * 60 * 60 * 1000,
       })
       .status(200)
@@ -53,6 +55,8 @@ export const google = async (req, res, next) => {
       res
         .cookie("token", token, {
           httpOnly: true,
+          secure: true,        // 🔥 REQUIRED on HTTPS (Vercel)
+  sameSite: "none",    // 🔥 REQUIRED for cross-domain
           maxAge: Date.now() + 24 * 60 * 60 * 1000,
         })
         .status(200)
@@ -86,7 +90,11 @@ export const google = async (req, res, next) => {
 };
 export const Signout = async (req, res, next) => {
   try {
-    res.clearCookie("token");
+    res.clearCookie("token", {
+  httpOnly: true,
+  secure: true,
+  sameSite: "none",
+});
     res.status(200).json({
       success: true,
       message: "User has been logged out!",

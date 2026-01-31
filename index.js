@@ -14,12 +14,16 @@ const _dirname = path.resolve();
 
 
 
-mongoose
-  .connect(process.env.MONGO)
-  .then(() => {
-    console.log("Databse is connected");
-  })
-  .catch((error) => console.log(error.message));
+if (mongoose.connection.readyState === 0) {
+  mongoose
+    .connect(process.env.MONGO)
+    .then(() => {
+      console.log("Database is connected");
+    })
+    .catch((error) => console.log(error.message));
+} else {
+  console.log("Using existing mongoose connection");
+}
  app.use(cors({
   origin: "https://mern-estate-frontend-delta.vercel.app",
   credentials: true

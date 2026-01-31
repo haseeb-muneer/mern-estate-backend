@@ -21,7 +21,7 @@ mongoose
   })
   .catch((error) => console.log(error.message));
  app.use(cors({
-  origin: "https://mern-estate-frontend-delta.vercel.app/",
+  origin: "https://mern-estate-frontend-delta.vercel.app",
   credentials: true
 }));
 app.use(express.json());
